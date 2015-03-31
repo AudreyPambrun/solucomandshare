@@ -1,0 +1,25 @@
+<ion-view title="Leaderboard">
+  <ion-nav-buttons side="right">
+    <button class="button" ng-click="refreshLeaderboard()">
+      <i class="icon ion-refresh"></i>
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="padding content-stable">
+    <ul class="list card">
+      <div class="item item-divider">
+        <div class="row">
+          <div class="col col-20"><h2 style="margin-left:-7px;">Rank</h2></div>
+          <div class="col col-60"><h2 align="center">Username</h2></div>
+          <div class="col col-20"><h2 style="margin-left:-7px;">Score</h2></div>
+        </div>
+      </div>
+      <li class="item" ng-repeat="user in users">
+        <div class="row">
+          <div class="col col-20"><h1 >{{user.rank}}</h1></div>
+          <div class="col col-60"><h2 style="color:#444;">{{user.username}}</h2></div>
+          <div class="col col-20"><p class="balanced" style="margin-left:-5px;font-size:20px;color:#66cc33;">{{user.score}}</p></div>
+        </div>
+      </li>
+    </ul>
+  </ion-content>
+</ion-view>

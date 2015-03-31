@@ -1,0 +1,31 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-dark">
+    <h1 class="title">Allez plus loin!</h1>
+  </ion-header-bar>
+  <ion-content class="padding content-stable">
+
+    <h2 align="center" style="font-size:20px;color:{{classAnswerModal}};">{{answerType}}</h2>
+
+    <div class="list card">
+
+      <div class="item item-divider item-text-wrap">
+        <p style="font-size:16px;">{{answerText}}</p>
+      </div>
+
+      <div class="item item-icon-left item-text-wrap dark">
+        <i class="icon ion-person"></i>
+        <h2>Pour gagner 10 points supplémentaires, échangez avec {{nameConsultant}}</h2>
+      </div>
+
+      <label class="item item-input">
+        <input type="text" placeholder="Code" ng-model="data.codeNextQuestion">
+      </label>
+
+    </div>
+
+    <button class="button button-block button-dark" ng-click="nextQuestion()">
+      Question suivante
+    </button>
+
+  </ion-content>
+</ion-modal-view>
