@@ -229,7 +229,7 @@ angular.module('starter.controllers', [])
     $scope.questionsAnswered = JSON.parse(localStorage["questionsAnswered"]);
 
     console.log("$scope.questionsAnswered.length "  + $scope.questionsAnswered.length + " $scope.questionsAnswered value " + $scope.questionsAnswered[0]);
-    console.log("idQuestion " + $scope.idQuestion + " title " + $scope.titleQuestion + "\ngoodAnswerIndex " + $scope.goodAnswerIndex + "\nwrongAnswer " + $scope.wrongAnswer);
+    console.log("idQuestion " + $scope.idQuestion + " title " + $scope.titleQuestion);
 
     // Good answer
 /*     if ( itemAnswer == $scope.goodAnswerIndex )
