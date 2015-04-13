@@ -1,15 +1,17 @@
 <ion-modal-view>
-  <ion-header-bar class="bar-dark">
-    <h1 class="title">Allez plus loin!</h1>
+  <ion-header-bar class="bar-light">
+    <h1 class="title"><img class="title-image" src="../img/logo.png" width="160" height="36" /></h1>
   </ion-header-bar>
   <ion-content class="padding content-stable">
 
-    <h2 align="center" style="font-size:20px;color:{{classAnswerModal}};">Bonne réponse !</h2> <!-- // TODO -->
+    <h2 align="center" style="font-size:20px;color:{{classAnswerModal}};">{{answer}}</h2> <!-- // TODO -->
 
     <div class="list card">
       <div class="item item-body item-text-wrap dark">
-        <h2>Pour découvrir plus à propos de ce sujet, échangez avec <b>{{nameConsultant}}</b></h2>
-		<img align="center" class="full-image" src="img/{{imgConsultant}}.jpg">
+        <h2>Pour en savoir plus, échangez avec <b>{{nameConsultant}}</b></h2>
+		<div style="text-align: center">
+			<img align="center" src="../img/{{imgConsultant}}.jpg">
+		</div>
       </div>
     </div>
 
