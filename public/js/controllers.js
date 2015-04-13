@@ -40,7 +40,7 @@ angular.module('starter.controllers', [])
       if ( (typeof $scope.user.username === "undefined" && typeof $scope.user.email === "undefined") || ($scope.user.username == "" && $scope.user.email == "") )
       {
           $ionicLoading.hide();
-          $scope.error.message = 'Veuillez saisir un username & un email';
+          $scope.error.message = 'Veuillez saisir un nom & un email';
           $scope.$apply();
       }
       else if (typeof $scope.user.email === "undefined" || $scope.user.email == "")
@@ -52,7 +52,7 @@ angular.module('starter.controllers', [])
       else if ( typeof $scope.user.username === "undefined" || $scope.user.username == "")
       {
           $ionicLoading.hide();
-          $scope.error.message = 'Veuillez saisir un username';
+          $scope.error.message = 'Veuillez saisir un nom';
           $scope.$apply();
       }
       else // The user can be registered
@@ -83,9 +83,9 @@ angular.module('starter.controllers', [])
             error: function(user, error) {
               $ionicLoading.hide();
               if (error.code === 125) {
-                $scope.error.message = 'Veuillez saisir une adresse mail valide';
+                $scope.error.message = 'Veuillez saisir une adresse email valide';
               } else if (error.code === 202) {
-                $scope.error.message = 'Ce username est déjà utilisé';
+                $scope.error.message = 'Ce nom est déjà utilisé';
               } else {
                 $scope.error.message = error.message;
               }
@@ -236,21 +236,24 @@ angular.module('starter.controllers', [])
     { */
 	$scope.answerType = 'Bonne réponse';
 	$scope.answerText = '';
-	$scope.classAnswerModal = '#66cc33';
+	$scope.classAnswerModal = '#B00058';
 	$scope.data = {};
 	
 	if(itemAnswer == 0)
 	{
+		$scope.answer = $scope.asw1;
 		$scope.nameConsultant = $scope.nameConsultantAnsw1;
 		$scope.imgConsultant = $scope.imgConsultantAnsw1;
 	}
 	else if(itemAnswer == 1)
 	{
+		$scope.answer = $scope.asw2;
 		$scope.nameConsultant = $scope.nameConsultantAnsw2;
 		$scope.imgConsultant = $scope.imgConsultantAnsw2;
 	}
 	else
 	{
+		$scope.answer = $scope.asw3;
 		$scope.nameConsultant = $scope.nameConsultantAnsw3;
 		$scope.imgConsultant = $scope.imgConsultantAnsw3;
 	}

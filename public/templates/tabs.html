@@ -3,20 +3,20 @@
   Each tab's child <ion-nav-view> directive will have its own
   navigation history that also transitions its views in and out.
 -->
-<ion-tabs class="tabs-dark tabs-icon-top" ng-controller="tabsCtrl">
+<ion-tabs class="tabs-light tabs-icon-top" ng-controller="tabsCtrl">
 
   <!-- Quiz Tab -->
-  <ion-tab title="Quiz" icon="icon ion-chatboxes" href="#/tab/quiz" class="{{endGame()}}">
+  <ion-tab title="Quizz" icon="icon ion-chatboxes" href="#/tab/quiz" class="{{endGame()}}">
     <ion-nav-view name="tab-quiz"></ion-nav-view>
   </ion-tab>
 
   <!-- A propos Tab -->
-  <ion-tab title="A propos" icon="icon ion-information-circled" href="#/tab/about">
+  <ion-tab title="Revue de presse" icon="icon ion-speakerphone" href="#/tab/about">
     <ion-nav-view name="tab-about"></ion-nav-view>
   </ion-tab>
   
   <!-- End Tab -->
-  <ion-tab title="Refaire" icon="icon ion-loop" href="#/tab/end">
+  <ion-tab title="A propos" icon="icon ion-information-circled" href="#/tab/end">
     <ion-nav-view name="tab-end"></ion-nav-view>
   </ion-tab>
 
