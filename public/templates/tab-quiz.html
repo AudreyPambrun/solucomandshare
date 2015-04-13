@@ -1,0 +1,26 @@
+<ion-view title="{{titleQuestion}}">
+
+  <ion-content class="padding content-stable">
+
+    <h4 align="center" class="text-dark">
+      {{text}}
+    </h4>
+
+    <ul class="list card" ng-show="questionBlockAnswer">
+
+      <a align="center" class="item item-text-wrap" ng-click="verifyResult(0)">
+        {{asw1}}
+      </a>
+
+      <a align="center" class="item item-text-wrap" ng-click="verifyResult(1)">
+        {{asw2}}
+      </a>
+
+      <a align="center" class="item item-text-wrap" ng-click="verifyResult(2)">
+        {{asw3}}
+      </a>
+
+    </ul>
+
+  </ion-content>
+</ion-view>
