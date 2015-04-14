@@ -3,6 +3,8 @@ angular.module('starter.controllers', [])
 .controller('RegisterCtrl', function ($scope, $state, $ionicLoading,$rootScope) {
 
   localStorage.removeItem("questionsAnswered");
+  localStorage.removeItem("questionsImgResult");
+  localStorage.removeItem("questionsNameResult");
   //localStorage.setItem("registered", "false");
 
   $scope.user = {};
@@ -133,6 +135,38 @@ angular.module('starter.controllers', [])
      // Re-serialize the array back into a string and store it in localStorage
      localStorage.setItem('questionsAnswered', JSON.stringify(a));
   };
+  
+  $scope.saveImgResultToQuestion = function(data) {
+    var a;
+    //is anything in localstorage?
+    if (localStorage.getItem('questionsImgResult') === null) {
+        a = [];
+    } else {
+         // Parse the serialized data back into an array of objects
+         a = JSON.parse(localStorage.getItem('questionsImgResult'));
+     }
+     // Push the new data (whether it be an object or anything else) onto the array
+     a.push(data);
+     // Alert the array value
+     // Re-serialize the array back into a string and store it in localStorage
+     localStorage.setItem('questionsImgResult', JSON.stringify(a));
+  };
+  
+  $scope.saveNameResultToQuestion = function(data) {
+    var a;
+    //is anything in localstorage?
+    if (localStorage.getItem('questionsNameResult') === null) {
+        a = [];
+    } else {
+         // Parse the serialized data back into an array of objects
+         a = JSON.parse(localStorage.getItem('questionsNameResult'));
+     }
+     // Push the new data (whether it be an object or anything else) onto the array
+     a.push(data);
+     // Alert the array value
+     // Re-serialize the array back into a string and store it in localStorage
+     localStorage.setItem('questionsNameResult', JSON.stringify(a));
+  };
 
   $scope.getQuestion = function() {
 
@@ -144,6 +178,10 @@ angular.module('starter.controllers', [])
     if ( typeof localStorage["questionsAnswered"] === "undefined" )
     {
         choosenQuestion = 1;
+		localStorage.setItem('questionsImgResult', JSON.stringify([]));
+		$scope.questionsAnswered = JSON.parse(localStorage["questionsImgResult"]);
+		localStorage.setItem('questionsNameResult', JSON.stringify([]));
+		$scope.questionsAnswered = JSON.parse(localStorage["questionsNameResult"]);
     }
     else
     {
@@ -238,6 +276,8 @@ angular.module('starter.controllers', [])
 	$scope.answerText = '';
 	$scope.classAnswerModal = '#B00058';
 	$scope.data = {};
+	$scope.nameConsultant = "";
+	$scope.imgConsultant = "";
 	
 	if(itemAnswer == 0)
 	{
@@ -257,10 +297,14 @@ angular.module('starter.controllers', [])
 		$scope.nameConsultant = $scope.nameConsultantAnsw3;
 		$scope.imgConsultant = $scope.imgConsultantAnsw3;
 	}
-
+	$scope.saveImgResultToQuestion($scope.imgConsultant);
+	$scope.saveNameResultToQuestion($scope.nameConsultant);
+	
 	$ionicModal.fromTemplateUrl('templates/modal-checkConsultant.html', {
 	  scope: $scope,
-	  animation: 'slide-in-up'
+	  animation: 'slide-in-up',
+	  backdropClickToClose: false,
+	  hardwareBackButtonClose: false
 	}).then(function(modal) {
 
 	  $scope.modal = modal;
@@ -345,6 +389,15 @@ angular.module('starter.controllers', [])
 
 .controller('AboutCtrl', function($scope, $ionicPopup, $state) {
 
+	$scope.extfile = function() {
+		var f = "../img/revue_VF.pdf";
+		console.log(f);
+		var ref = window.open(f, '_self', 'location=yes', 'closebuttoncaption=Return');
+	  };
+  
+    $scope.pageLoaded = function() {
+    };
+	
   $scope.feedback = function(itemAnswer) {
 
     $scope.data = {};
@@ -392,6 +445,9 @@ angular.module('starter.controllers', [])
 })
 
 .controller('EndCtrl', function($scope, $state, $rootScope, $ionicPopup, $ionicLoading, $ionicModal, $rootScope, $timeout) {
+	$scope.questionsImgResult = JSON.parse(localStorage["questionsImgResult"]);
+	$scope.questionsNameResult = JSON.parse(localStorage["questionsNameResult"]);
+	$scope.questionsResult = {name: $scope.questionsNameResult, img: $scope.questionsImgResult};
 	
 	$scope.restart = function() 
 	{
@@ -402,6 +458,10 @@ angular.module('starter.controllers', [])
 		
 		localStorage.setItem('questionsAnswered', JSON.stringify(a));
 		$scope.questionsAnswered = JSON.parse(localStorage["questionsAnswered"]);
+		localStorage.setItem('questionsImgResult', JSON.stringify(a));
+		$scope.questionsAnswered = JSON.parse(localStorage["questionsImgResult"]);
+		localStorage.setItem('questionsNameResult', JSON.stringify(a));
+		$scope.questionsAnswered = JSON.parse(localStorage["questionsNameResult"]);
 		
 		console.log($scope.questionsAnswered);
 		$scope.$apply();
